@@ -1,0 +1,100 @@
+<html>
+<head><title>POST request</title></head>
+<body>
+<h1>Ejemplo básico de request POST</h1>
+<form action="./script.php" method="GET" id="dropdown">
+	<label for="first_name">Nombre</label>
+    <input  name="first_name" id="text">
+    <label for="last_name">Apellido</label>
+    <input name="last_name" id="surname">
+    <label for="email">Correo</label>
+    <input name="email" id="email">             
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>
+
+<script>
+// Código para popular la checkbox con los valores de la API.
+// No está limpio ni optimizado todavía - ignorar
+let dropdown = $('#dropdown');
+$.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
+    var ele = document.getElementById('dropdown');
+    for (var i = 0; i < data.length; i++) {
+        ele.innerHTML +='<p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p>'
+    }
+    ele.innerHTML += '<a onclick="enviarAJson();">CLICK ACÁ</a>'
+});
+
+// ---------------
+// PARTE RELEVANTE
+// ---------------	
+function enviarAJson() {
+	var first_name = document.getElementById("text").value;
+	var last_name = document.getElementById("surname").value;
+	var email = document.getElementById("email").value;
+	var selected_courses = [];
+	var amountOfObjects;
+	// Might be a very round-about way to check how many checkboxes are there, but it makes sense to me for now.
+	// TO-DO: merge THIS json request with the one below
+	$.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
+		amountOfObjects = data.length;
+		for (var i = 0; i < amountOfObjects; i++) {
+			selected_courses[i] = document.getElementById(data[i].id).checked;
+		}
+	});
+	var dateObj = new Date();
+	var curTime = dateObj.toISOString();
+	var jsonObj = {
+		'id': 0,
+		'first_name': first_name,
+		'last_name': last_name,
+		'email': email,
+		'created_at': curTime,
+		'updated_at': curTime,
+		'courses': []
+	}
+	//template for the JSON we're going to add the courses to!
+
+	$.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
+		for (var i = 0; i < data.length; i++) {
+			if (selected_courses[i] == true) {
+				jsonObj.courses.push({
+					'id': (i + 1),
+					'name': 'placeholder',
+					'language_code': 'ph',
+					'level_id': 0,
+					'created_at': curTime,
+					'updated_at': curTime,
+					'level': {
+						'id': 0,
+						'name': 'placeholder'
+					},
+					'language': {
+						'code': 'placeholder',
+						'name': 'placeholder'
+					}
+				})
+				//luckily Trinomio did all of the heavy lifting, and by just inputting the ID number it fills all of the spaces for us.
+			}
+		}
+		//Finally, FINALLY, we have our JSON object. Finally.
+		//Now we can just send a POST request to the API server.
+		//I got stuck for like a day on this part because JS variables were messing with me.
+		console.log(JSON.stringify(jsonObj))
+		var url = "http://evera.challenge.trinom.io/api/peoples";
+		$.ajax({
+			url: url,
+			type: "POST",
+			data: JSON.stringify(jsonObj),
+			contentType: "application/json",
+			dataType: 'json',
+			error: function(xhr, status, error) {
+				console.log(error);
+				console.log(xhr.responseText);
+			},
+			success: "El mensaje fue enviado!" //TO-DO: send them back to index. probably add an alert afterwards
+		});
+	});
+}
+</script>
