@@ -48,6 +48,7 @@
 </div>
 
       <script type="text/javascript">
+
       $.getJSON('http://evera.challenge.trinom.io/api/peoples', function(data) {
       
       var div = document.getElementById('mypanel');
@@ -55,12 +56,12 @@
           var keys = Object.keys(data.data);
           for(var i=0; i<keys.length; i++){
 
-            $('<tr class="parent">').append(
+            $('<tr class="header expand">').append(
               $('<td>').text(data.data[i].id),
               $('<td>').text(data.data[i].first_name),
               $('<td>').text(data.data[i].last_name),
               $('<td>').text(data.data[i].email),
-              $('<td><button id="toggle">Expandir</button>'),
+              $('<td><button id="toggle">Expandir</button> <span>+</span>'),
               $('<td><a href="./modificar.html">Modificar</a> <a href="./eliminar.html">Eliminar</a>')
             ).appendTo('#records_table');
 
@@ -73,13 +74,11 @@
             }
           }
       });
-
-      $("#toggle").click(function(){
-               $(".target").toggle( 'slow', function(){
-                  $(".log").text('Toggle Transition Complete');
-               });
-            });
       </script>
+
+      <style type="text/css">
+		
+      </style>
 
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
