@@ -41,7 +41,14 @@
             <tbody>
           </table>
 
+          <div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" href="./crear.html">
+    <i class="large material-icons waves-effect waves-light">add</i>
+  </a>
+</div>
+
       <script type="text/javascript">
+
       $.getJSON('http://evera.challenge.trinom.io/api/peoples', function(data) {
       
       var div = document.getElementById('mypanel');
@@ -49,13 +56,13 @@
           var keys = Object.keys(data.data);
           for(var i=0; i<keys.length; i++){
 
-            $('<tr class="parent">').append(
+            $('<tr class="header expand">').append(
               $('<td>').text(data.data[i].id),
               $('<td>').text(data.data[i].first_name),
               $('<td>').text(data.data[i].last_name),
               $('<td>').text(data.data[i].email),
-              $('<td><button id="toggle">Expandir</button>'),
-              $('<td><a href="./modificar.html">Modificar</a> <a href="./eliminar.html">Eliminar</a>')
+              $('<td><button id="toggle">Expandir</button> <span>+</span>'),
+              $('<td><a href="./modificar.html">Modificar</a> <button onclick="eliminarEntrada(' + data.data[i].id + ',"' + data.data[i].first_name + '");">Eliminar</a>')
             ).appendTo('#records_table');
 
             var keystwo = Object.keys(data.data[i].courses);
@@ -68,12 +75,29 @@
           }
       });
 
-      $("#toggle").click(function(){
-               $(".target").toggle( 'slow', function(){
-                  $(".log").text('Toggle Transition Complete');
-               });
-            });
+      function eliminarEntrada(id, name) {
+      	var url = "http://evera.challenge.trinom.io/api/peoples/" + id;
+	    $.ajax({
+	      url: url,
+	      type: "DELETE",
+	      data: JSON.stringify({"people": id}),
+	      contentType: "application/json",
+	      dataType: 'json',
+	      error: function(xhr, status, error) {
+	        console.log(error);
+	        console.log(xhr.responseText);
+	        M.toast({html: 'Hay un error en tu solicitud.', classes: 'rounded'});
+	      },
+	      success: function() {
+	        M.toast({html: '¡El usuario "' + NAME + '" fue eliminado con éxito!', classes: 'rounded'});
+	      } //TO-DO: send them back to index. probably add an alert afterwards
+	    });
+      }
       </script>
+
+      <style type="text/css">
+		
+      </style>
 
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
