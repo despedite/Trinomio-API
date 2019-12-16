@@ -28,17 +28,6 @@
 
       
           <table id="records_table" border='1' class="responsive-table">
-            <thead>
-              <tr>
-                  <th>#</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Email</th>
-                  <th>Cursos</th>
-                  <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
           </table>
 
           <div class="fixed-action-btn">
@@ -48,34 +37,37 @@
 </div>
 
       <script type="text/javascript">
+   	   function showTable() {
+	      $.getJSON('http://evera.challenge.trinom.io/api/peoples', function(data) {
 
-      $.getJSON('http://evera.challenge.trinom.io/api/peoples', function(data) {
-      
-      var div = document.getElementById('mypanel');
+	          var keys = Object.keys(data.data);
 
-          var keys = Object.keys(data.data);
-          for(var i=0; i<keys.length; i++){
+	          //Reset the data, in case this is executed more than once (E.G. when deleting an user)
+	          document.getElementById('records_table').innerHTML = '<thead><tr><th>#</th><th>Nombre</th><th>Apellido</th><th>Email</th><th>Cursos</th><th>Acciones</th></tr></thead><tbody>';
 
-            $('<tr class="header expand">').append(
-              $('<td>').text(data.data[i].id),
-              $('<td>').text(data.data[i].first_name),
-              $('<td>').text(data.data[i].last_name),
-              $('<td>').text(data.data[i].email),
-              $('<td><button id="toggle">Expandir</button> <span>+</span>'),
-              $('<td><a href="./modificar.html">Modificar</a> <button onclick="eliminarEntrada(' + data.data[i].id + ',"' + data.data[i].first_name + '");">Eliminar</a>')
-            ).appendTo('#records_table');
+	          for(var i=0; i<keys.length; i++){
 
-            var keystwo = Object.keys(data.data[i].courses);
-            for(var j=0; j<keystwo.length; j++){
-              $('<tr>').append(
-                $('<td style="background-color:lightgrey">').text(data.data[i].courses[j].id),
-                $('<td colspan="5" style="background-color:lightgrey"> <b>' + data.data[i].courses[j].name + '</b><br>' + data.data[i].courses[j].level.name + '<br><small>' + data.data[i].courses[j].language.name + "</small><br> ...") //TODO: removes last line??
-              ).appendTo('#records_table');
-            }
-          }
-      });
+	            $('<tr class="header expand">').append(
+	              $('<td>').text(data.data[i].id),
+	              $('<td>').text(data.data[i].first_name),
+	              $('<td>').text(data.data[i].last_name),
+	              $('<td>').text(data.data[i].email),
+	              $('<td><button id="toggle">Expandir</button> <span>+</span>'),
+	              $('<td><a href="./modificar.html">Modificar</a> <button onclick="eliminarEntrada(' + "'" + data.data[i].first_name + "'" + ', ' + data.data[i].id + ');">Eliminar</a>')
+	            ).appendTo('#records_table');
 
-      function eliminarEntrada(id, name) {
+	            var keystwo = Object.keys(data.data[i].courses);
+	            for(var j=0; j<keystwo.length; j++){
+	              $('<tr>').append(
+	                $('<td style="background-color:lightgrey">').text(data.data[i].courses[j].id),
+	                $('<td colspan="5" style="background-color:lightgrey"> <b>' + data.data[i].courses[j].name + '</b><br>' + data.data[i].courses[j].level.name + '<br><small>' + data.data[i].courses[j].language.name + "</small><br> ...") //TODO: removes last line??
+	              ).appendTo('#records_table');
+	            }
+	          }
+	      });
+   	   }
+
+      function eliminarEntrada(strg, id) {
       	var url = "http://evera.challenge.trinom.io/api/peoples/" + id;
 	    $.ajax({
 	      url: url,
@@ -89,10 +81,14 @@
 	        M.toast({html: 'Hay un error en tu solicitud.', classes: 'rounded'});
 	      },
 	      success: function() {
-	        M.toast({html: '¡El usuario "' + NAME + '" fue eliminado con éxito!', classes: 'rounded'});
+	        M.toast({html: '¡El usuario "' + strg + '" fue eliminado con éxito!', classes: 'rounded'});
+	        showTable();
 	      } //TO-DO: send them back to index. probably add an alert afterwards
 	    });
       }
+
+      //show table when web page opens
+      showTable();
       </script>
 
       <style type="text/css">
