@@ -16,7 +16,7 @@
 
 APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es/docs/Web/JavaScript), [jQuery](https://jquery.com/) y [Materialize](https://materializecss.com/); que toma los elementos de [una API](http://evera.challenge.trinom.io/api/documentation) diseñada para tomar los datos de personas inscritas a ciertos cursos, y permite visualizar los datos de esta en una tabla simple, añadir nuevos datos a la API mediante requests POST, modificar datos ya existentes, y eliminar personas de la API. *Creada para el Desafío Trinomio (2019) por Erik Bianco Vera.*
 
-![https://raw.githubusercontent.com/despediteerik/Trinomio-API/documentacion/img/snapshot.png?token=AIVICLU53OIRMDSHTOEMZDC6AKDXM]()
+![](https://raw.githubusercontent.com/despediteerik/Trinomio-API/documentacion/img/snapshot.png?token=AIVICLU53OIRMDSHTOEMZDC6AKDXM)
 
 ## Table of Contents
 - [Quickstart](#quickstart)
