@@ -72,7 +72,7 @@
                 </label>
               </p>
             </div>
-          <a class="btn disabled objpadding">SUBIR</a>
+          <a class="btn disabled nicebtn objpadding">SUBIR</a>
       </div>
       </form>
 
@@ -93,7 +93,6 @@
             elem.parentNode.removeChild(elem);
 
           });
-          
 
 function enviarAJson() {
   var first_name = document.getElementById("text").value;
@@ -101,6 +100,8 @@ function enviarAJson() {
   var email = document.getElementById("email").value;
   var selected_courses = [];
   var amountOfObjects;
+
+
   // Might be a very round-about way to check how many checkboxes are there
   // TO-DO: check if I can make this in a less round-about way
   $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
@@ -165,9 +166,15 @@ function enviarAJson() {
       contentType: "application/json",
       dataType: 'json',
       error: function(xhr, status, error) {
+        // Error catching
         console.log(error);
         console.log(xhr.responseText);
-        M.toast({html: '¡Hay un error en tus respuestas!', classes: 'rounded'});
+        errores = JSON.parse(xhr.responseText);
+        for (var key in errores.errors) {
+          for (var error in errores.errors[key]) {
+             M.toast({html: errores.errors[key][error], classes: 'rounded'});
+          }
+        }
       },
       success: function() {
         M.toast({html: '¡Tu entrada se ha ' + peoplesTerm + ' con éxito!', classes: 'rounded'});
@@ -202,6 +209,10 @@ if(urlParams.has('edit')) {
   </div>
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <style>
+    .nicebtn
+    {
+      margin-top: 15px;
+    }
     .objpadding
     {
       margin-left: 10px;
