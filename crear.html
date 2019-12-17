@@ -21,13 +21,16 @@
       <a class="brand-logo" href="index.html"><img src="img/logo.png" style="height: 32px; vertical-align: middle;"></a>
       <ul class="right hide-on-med-and-down" id="nav-mobile">
         <li>
+          <a href="https://github.com/despediteerik/Trinomio-API">Github</a>
+        </li>
+        <li>
           <a href="index.html">Personas</a>
         </li>
       </ul>
     </div>
   </nav>
   <div class="container">
-    <h4 id="title">Crear una persona</h4><br>
+    <h4 id="title" class="objpadding">Crear una persona</h4><br>
     <div class="row">
       <form action="./script.php" id="dropdown" method="get" name="dropdown">
         <div class="input-field col s12">
@@ -69,7 +72,7 @@
                 </label>
               </p>
             </div>
-          <a class="btn disabled uploadbtn">SUBIR</a>
+          <a class="btn disabled objpadding">SUBIR</a>
       </div>
       </form>
 
@@ -82,7 +85,7 @@
             for (var i = 0; i < data.length; i++) {
               ele.innerHTML += '<div class="col s4 cbox"><p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p></div>'
             }
-            ele.innerHTML += '<br><a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn uploadbtn">Subir</a>'
+            ele.innerHTML += '<br><a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn objpadding">Subir</a>'
             loadData();
 
             //remove preloader (Cargando...)
@@ -199,7 +202,7 @@ if(urlParams.has('edit')) {
   </div>
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <style>
-    .uploadbtn
+    .objpadding
     {
       margin-left: 10px;
     }
