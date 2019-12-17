@@ -27,41 +27,51 @@
     </div>
   </nav>
   <div class="container">
-    <h4 id="title">Crear una persona</h4>
+    <h4 id="title">Crear una persona</h4><br>
     <div class="row">
       <form action="./script.php" id="dropdown" method="get" name="dropdown">
-        <label for="first_name">First Name</label>
-        <input id="text" name="first_name">
-        <label for="last_name">Last Name</label>
-        <input id="surname" name="last_name">
-        <label for="email">Email</label>
-        <input id="email" name="email">
-
-        <!--Gets deleted after checkbox populates itself with JSON values -->
-        <div id="preloader">
-          <p>
-            <label>
-              <input type="checkbox" disabled="disabled" />
-              <span>Cargando...</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" disabled="disabled" />
-              <span>Cargando...</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" disabled="disabled" />
-              <span>Cargando...</span>
-            </label>
-          </p>  
-          <a class="btn disabled">CARGANDO...</a>
+        <div class="input-field col s12">
+        <input id="text" name="first_name" class="validate">
+        <label for="first_name" class="active">Nombre</label>
       </div>
-
+      <div class="input-field col s12">
+        <input id="surname" name="last_name" class="validate">
+        <label for="last_name" class="active">Apellido</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="email" name="email" class="validate">
+        <label for="email" class="active">Correo electrónico</label>
+        <span class="helper-text" data-error="Escribe un correo electrónico válido." data-success="¡Excelente!"></span>
+      </div>
+        <!--Gets deleted after checkbox populates itself with JSON values -->
+          <div id="preloader">
+              <div class="col s4 cbox">
+              <p>
+                <label>
+                  <input type="checkbox" disabled="disabled" />
+                  <span>Cargando...</span>
+                </label>
+              </p>
+            </div>
+            <div class="col s4 cbox">
+              <p>
+                <label>
+                  <input type="checkbox" disabled="disabled" />
+                  <span>Cargando...</span>
+                </label>
+              </p>
+            </div>
+            <div class="col s4 cbox">
+              <p>
+                <label>
+                  <input type="checkbox" disabled="disabled" />
+                  <span>Cargando...</span>
+                </label>
+              </p>
+            </div>
+          <a class="btn disabled uploadbtn">SUBIR</a>
+      </div>
       </form>
-      <div id="demo">
 
         <script type="text/javascript">
           var urlParams = new URLSearchParams(window.location.search);
@@ -70,9 +80,9 @@
           $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
             var ele = document.getElementById('dropdown');
             for (var i = 0; i < data.length; i++) {
-              ele.innerHTML += '<p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p>'
+              ele.innerHTML += '<div class="col s4 cbox"><p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p></div>'
             }
-            ele.innerHTML += '<a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn">Subir</a>'
+            ele.innerHTML += '<br><a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn uploadbtn">Subir</a>'
             loadData();
 
             //remove preloader (Cargando...)
@@ -188,5 +198,11 @@ if(urlParams.has('edit')) {
     </div>
   </div>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <style>
+    .uploadbtn
+    {
+      margin-left: 10px;
+    }
+  </style>
 </body>
 </html>
