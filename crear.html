@@ -177,7 +177,27 @@ function enviarAJson() {
         errores = JSON.parse(xhr.responseText);
         for (var key in errores.errors) {
           for (var error in errores.errors[key]) {
-             M.toast({html: errores.errors[key][error], classes: 'rounded'});
+            // Switch-case structure for translating the errors JSON may give.
+            // It isn't translating everything - more technical errors I'd rather have in English anyways,
+            // but it's the four most common errors having to do with user error.
+            switch(errores.errors[key][error]) {
+              case "The first name field is required.":
+                M.toast({html: "Se requiere escribir el nombre.", classes: 'rounded'});
+                break;
+              case "The last name field is required.":
+                M.toast({html: "Se requiere escribir el apellido.", classes: 'rounded'});
+                break;
+              case "The email field is required.":
+                M.toast({html: "Se requiere escribir el correo electrónico.", classes: 'rounded'});
+                break;
+              case "The email has already been taken.":
+                M.toast({html: "Este correo electrónico ya está en uso.", classes: 'rounded'});
+                break;
+              default:
+                // In case the error doesn't exist, just print the original error in English.
+                M.toast({html: errores.errors[key][error], classes: 'rounded'});
+                break;
+            }
           }
         }
       },
