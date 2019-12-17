@@ -19,12 +19,12 @@ APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es
 ![](https://raw.githubusercontent.com/despediteerik/Trinomio-API/documentacion/img/snapshot.png?token=AIVICLU53OIRMDSHTOEMZDC6AKDXM)
 
 ## Contenido:
-- [Donde empezar](#donde empezar)
+- [Instalación](#instalación)
 - [Tutorial](#tutorial)
 - [Changelog](#changelog)
 - [Licencia](#licencia)
 
-## Donde empezar:
+## Instalación:
 Para revisar APIHook cómo el usuario final, podés usarlo on-line sin descargar nada en http://erik.games/apihook.
 
 Por otro lado, para instalar APIHook manualmente en tu computadora:
@@ -34,7 +34,7 @@ Por otro lado, para instalar APIHook manualmente en tu computadora:
 
 APIHook usa Javascript puro, para evitar tener que crear un servidor para acceder a los datos de la API (cómo lo haría si el sitio web usase PHP).
 
-## Funcionalidad básica
+## Tutorial
 APIHook tiene dos vistas: la visualización de la tabla con los datos de la API, y la creación (o modificación) de nuevas entradas a la API.
 
 La *creación* de nuevas entradas puede ser encontrada presionando el Floating Action Button abajo a la derecha (el botón violeta con el símbolo de más). Presionandoló nos llevará a una nueva página, con un formulario de entrada donde podemos escribir el nombre, apellido y correo electrónico del usuario; y elegir con un selector múltiple todos los cursos en los que la persona está inscripta (buscados en api/courses). Llenar este formulario correctamente enviará una notificación a modo de *toast* al usuario para que vuelvan a la tabla a ver su nueva entrada (o quedarse a agregar más usuarios).
@@ -42,9 +42,6 @@ La *creación* de nuevas entradas puede ser encontrada presionando el Floating A
 En la *tabla*, se pueden observar tres botones a la derecha de una entrada: Expandir, Modificar y Eliminar. Presionar "Expandir" mostrará todos los cursos en los que la persona seleccionada está inscrito (y dará la opción de, presionando el mismo botón, contraer para guardar espacio.) Eliminar, por otro lado, *eliminará* la entrada de usuario de la base de datos, junto con sus cursos; refrescará la vista de la tabla, y mostrará una notificación indicando que la persona fue eliminada de la API correctamente.
 
 Modificar, sin embargo, enviará al usuario a el mismo formulario que si fueran a crear una nueva persona, pero alterado. Modificar una persona llena automáticamente los valores de la entrada a modificar (nombre, apellido, correo), y en vez de enviar una request POST a api/peoples, manda una request PUT a api/peoples/id. El resto de las características de modificar una entrada existente son las mismas que crear una entrada.
-
-## Documentación
-The documentation can be found at <http://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
 
 ## Changelog
 For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md).
