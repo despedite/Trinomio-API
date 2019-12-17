@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://materializecss.com/">
-    <img src="img/logo.png" width="150">
+    <img src="https://raw.githubusercontent.com/despediteerik/Trinomio-API/master/img/logo-p.png?token=AIVICLVC2VG6XR2SP3NULWS6AKBLW" width="150">
   </a>
 </p>
 
