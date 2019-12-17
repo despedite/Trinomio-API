@@ -17,8 +17,8 @@
 </head>
 <body>
   <nav>
-    <div class="nav-wrapper pink darken-2" style="padding: 0px 50px 0px 50px;">
-      <a class="brand-logo" href="index.html"><img src="img/logo.png" style="height: 32px; vertical-align: middle;"></a>
+    <div class="nav-wrapper purple darken-2" style="padding: 0px 50px 0px 50px;">
+      <a class="brand-logo" href="index.html"><img src="img/logo.png" style="height: 32px; vertical-align: middle; padding-bottom: 7px;"></a>
       <ul class="right hide-on-med-and-down" id="nav-mobile">
         <li>
           <a href="https://github.com/despediteerik/Trinomio-API">Github</a>
@@ -85,7 +85,7 @@
             for (var i = 0; i < data.length; i++) {
               ele.innerHTML += '<div class="col s4 cbox"><p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p></div>'
             }
-            ele.innerHTML += '<br><a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn objpadding pink darken-1">Subir</a>'
+            ele.innerHTML += '<br><a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn objpadding purple darken-1">Subir</a>'
             loadData();
 
             //remove preloader (Cargando...)
