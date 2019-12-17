@@ -9,83 +9,42 @@
 <p align="center">
   Un sitio web para crear, modificar, eliminar y visualizar personas y sus cursos, con la <a href="http://evera.challenge.trinom.io/api/documentation">API de Trinomio</a>.
   <br>
-  <a href="http://materializecss.com/"><strong>-- Browse the docs --</strong></a>
+  <strong><a href="http://erik.games/apihook">Revisalo online</a> · <a href="https://github.com/despediteerik/Trinomio-API/releases">Descargá el código fuente</a></strong>
   <br>
-  <br>
-  <a href="https://travis-ci.org/Dogfalo/materialize">
-    <img src="https://travis-ci.org/Dogfalo/materialize.svg?branch=master" alt="Travis CI badge">
-  </a>
-  <a href="https://badge.fury.io/js/materialize-css">
-    <img src="https://badge.fury.io/js/materialize-css.svg" alt="npm version badge">
-  </a>
-  <a href="https://cdnjs.com/libraries/materialize">
-    <img src="https://img.shields.io/cdnjs/v/materialize.svg" alt="CDNJS version badge">
-  </a>
-  <a href="https://david-dm.org/Dogfalo/materialize">
-    <img src="https://david-dm.org/Dogfalo/materialize/status.svg" alt="dependencies Status badge">
-    </a>
-  <a href="https://david-dm.org/Dogfalo/materialize#info=devDependencies">
-    <img src="https://david-dm.org/Dogfalo/materialize/dev-status.svg" alt="devDependency Status badge">
-  </a>
-  <a href="https://gitter.im/Dogfalo/materialize">
-    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter badge">
-  </a>
-</p>
 
-## Table of Contents
-- [Quickstart](#quickstart)
-- [Documentation](#documentation)
-- [Supported Browsers](#supported-browsers)
+***
+
+APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es/docs/Web/JavaScript), [jQuery](https://jquery.com/) y [Materialize](https://materializecss.com/); que toma los elementos de [una API](http://evera.challenge.trinom.io/api/documentation) diseñada para tomar los datos de personas inscritas a ciertos cursos, y permite visualizar los datos de esta en una tabla simple, añadir nuevos datos a la API mediante requests POST, modificar datos ya existentes, y eliminar personas de la API. *Creada para el Desafío Trinomio (2019) por Erik Bianco Vera.*
+
+![](https://raw.githubusercontent.com/despediteerik/Trinomio-API/documentacion/img/snapshot.png?token=AIVICLU53OIRMDSHTOEMZDC6AKDXM)
+
+## Contenido:
+- [Instalación](#instalación)
+- [Tutorial](#tutorial)
 - [Changelog](#changelog)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [Copyright and license](#copyright-and-license)
+- [Licencia](#licencia)
 
-## Quickstart:
-Read the [getting started guide](http://materializecss.com/getting-started.html) for more information on how to use materialize.
+## Instalación:
+Para revisar APIHook cómo el usuario final, podés usarlo on-line sin descargar nada en http://erik.games/apihook.
 
-- [Download the latest release](https://github.com/Dogfalo/materialize/releases/latest) of materialize directly from GitHub. ([Beta](https://github.com/Dogfalo/materialize/releases/))
-- Clone the repo: `git clone https://github.com/Dogfalo/materialize.git` (Beta: `git clone -b v1-dev https://github.com/Dogfalo/materialize.git`)
-- Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html). ([Beta](https://cdnjs.com/libraries/materialize/1.0.0-beta))
-- Install with [npm](https://www.npmjs.com): `npm install materialize-css` (Beta: `npm install materialize-css@next`)
-- Install with [Bower](https://bower.io): `bower install materialize` ([DEPRECATED](https://bower.io/blog/2017/how-to-migrate-away-from-bower/))
-- Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize` (Beta: `meteor add materialize:materialize@=1.0.0-beta`)
+Por otro lado, para instalar APIHook manualmente en tu computadora:
+- [Descarga la última versión de APIHook](https://github.com/despediteerik/Trinomio-API/releases). (También podés clonar master, descargandoló via este [link](https://github.com/despediteerik/Trinomio-API/archive/master.zip).)
+- Extraé los datos de la carpeta.
+- Abre el archivo "index.html" adentro de la carpeta en tu navegador de elección.
 
-## Documentation
-The documentation can be found at <http://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
+APIHook usa Javascript puro, para evitar tener que crear un servidor para acceder a los datos de la API (cómo lo haría si el sitio web usase PHP).
 
-### Running documentation locally
-Run these commands to set up the documentation:
+## Tutorial
+APIHook tiene dos vistas: la visualización de la tabla con los datos de la API, y la creación (o modificación) de nuevas entradas a la API.
 
-```bash
-git clone https://github.com/Dogfalo/materialize
-cd materialize
-npm install
-```
+La *creación* de nuevas entradas puede ser encontrada presionando el Floating Action Button abajo a la derecha (el botón violeta con el símbolo de más). Presionandoló nos llevará a una nueva página, con un formulario de entrada donde podemos escribir el nombre, apellido y correo electrónico del usuario; y elegir con un selector múltiple todos los cursos en los que la persona está inscripta (buscados en api/courses). Llenar este formulario correctamente enviará una notificación a modo de *toast* al usuario para que vuelvan a la tabla a ver su nueva entrada (o quedarse a agregar más usuarios).
 
-Then run `grunt monitor` to compile the documentation. When it finishes, open a new browser window and navigate to `localhost:8000`. We use [BrowserSync](https://www.browsersync.io/) to display the documentation.
+En la *tabla*, se pueden observar tres botones a la derecha de una entrada: Expandir, Modificar y Eliminar. Presionar "Expandir" mostrará todos los cursos en los que la persona seleccionada está inscrito (y dará la opción de, presionando el mismo botón, contraer para guardar espacio.) Eliminar, por otro lado, *eliminará* la entrada de usuario de la base de datos, junto con sus cursos; refrescará la vista de la tabla, y mostrará una notificación indicando que la persona fue eliminada de la API correctamente.
 
-### Documentation for previous releases
-Previous releases and their documentation are available for [download](https://github.com/Dogfalo/materialize/releases).
-
-## Supported Browsers:
-Materialize is compatible with:
-
-- Chrome 35+
-- Firefox 31+
-- Safari 9+
-- Opera
-- Edge
-- IE 11+
+Modificar, sin embargo, enviará al usuario a el mismo formulario que si fueran a crear una nueva persona, pero alterado. Modificar una persona llena automáticamente los valores de la entrada a modificar (nombre, apellido, correo), y en vez de enviar una request POST a api/peoples, manda una request PUT a api/peoples/id. El resto de las características de modificar una entrada existente son las mismas que crear una entrada.
 
 ## Changelog
-For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md).
+Podés encontrar el changelog entre actualizaciones en la página de [RELEASES](https://github.com/despediteerik/Trinomio-API/releases). También podés revisar el [historial de commits](https://github.com/despediteerik/Trinomio-API/commits/master), si querés ir más a fondo en que cambió entre cada commit (o mirar los [branches existentes](https://github.com/despediteerik/Trinomio-API/branches)).
 
-## Testing
-We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](CONTRIBUTING.md#jasmine-testing-guide).
-
-## Contributing
-Check out the [CONTRIBUTING document](CONTRIBUTING.md) in the root of the repository to learn how you can contribute. You can also browse the [help-wanted](https://github.com/Dogfalo/materialize/labels/help-wanted) tag in our issue tracker to find things to do.
-
-## Copyright and license
-Code Copyright 2018 Materialize. Code released under the MIT license.
+## Licencia
+APIHook es licensiado bajo [The Unlicense](https://github.com/despediteerik/Trinomio-API/blob/master/LICENSE), una licencia que permite el uso privado, comercial, modificación y distribución del código sin condiciones, liberandoló al dominio público. ¡Usá el código cómo quieras!
