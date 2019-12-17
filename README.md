@@ -19,9 +19,8 @@ APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es
 ![](https://raw.githubusercontent.com/despediteerik/Trinomio-API/documentacion/img/snapshot.png?token=AIVICLU53OIRMDSHTOEMZDC6AKDXM)
 
 ## Contenido:
-- [Donde empezar](#dondeempezar)
-- [Funcionaidad básica](#funcionalidadbasica)
-- [Documentación](#documentacion)
+- [Donde empezar](#donde empezar)
+- [Tutorial](#tutorial)
 - [Changelog](#changelog)
 - [Licencia](#licencia)
 
