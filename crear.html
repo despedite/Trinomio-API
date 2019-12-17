@@ -36,7 +36,6 @@
       </form>
       <div id="demo">
         <script type="text/javascript">
-          var urlParams = new URLSearchParams(window.location.search);
 let dropdown = $('#dropdown');
 $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
   var ele = document.getElementById('dropdown');
@@ -99,20 +98,10 @@ function enviarAJson() {
     //Now we can just send a POST request to the API server.
     //I got stuck for like a day on this part because JS variables were messing with me.
     console.log(JSON.stringify(jsonObj))
-    if (urlParams.has('edit')) { //urlparams edit = true
-      var peoplesId = urlParams.get('id');
-      var url = "http://evera.challenge.trinom.io/api/peoples/" + peoplesId;
-      console.log(url);
-      var peoplesType = "PUT";
-      var peoplesTerm = "actualizado";
-    } else {
-      var url = "http://evera.challenge.trinom.io/api/peoples";
-      var peoplesType = "POST";
-      var peoplesTerm = "subido";
-    }
+    var url = "http://evera.challenge.trinom.io/api/peoples";
     $.ajax({
       url: url,
-      type: peoplesType,
+      type: "POST",
       data: JSON.stringify(jsonObj),
       contentType: "application/json",
       dataType: 'json',
@@ -122,13 +111,13 @@ function enviarAJson() {
         M.toast({html: '¡Hay un error en tus respuestas!', classes: 'rounded'});
       },
       success: function() {
-        M.toast({html: '¡Tu entrada se ha ' + peoplesTerm + ' con éxito!', classes: 'rounded'});
+        M.toast({html: '¡Tu entrada se ha subido con éxito!', classes: 'rounded'});
       } //TO-DO: send them back to index. probably add an alert afterwards
     });
   });
 }
 
-
+var urlParams = new URLSearchParams(window.location.search);
 function loadData() {
 if(urlParams.has('edit')) {
   var first = document.getElementById('text');
