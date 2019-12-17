@@ -4,6 +4,9 @@
   <!--UTF-8-->
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
+  <!--Favicon y nombre-->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <title>Crear persona - APIHook</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!--Import materialize.css-->
   <link href="css/materialize.min.css" media="screen,projection" rel="stylesheet" type="text/css">
@@ -14,9 +17,12 @@
 </head>
 <body>
   <nav>
-    <div class="nav-wrapper">
-      <a class="brand-logo" href="index.html">APIHook</a>
+    <div class="nav-wrapper pink darken-2" style="padding: 0px 50px 0px 50px;">
+      <a class="brand-logo" href="index.html"><img src="img/logo.png" style="height: 32px; vertical-align: middle;"></a>
       <ul class="right hide-on-med-and-down" id="nav-mobile">
+        <li>
+          <a href="https://github.com/despediteerik/Trinomio-API">Github</a>
+        </li>
         <li>
           <a href="index.html">Personas</a>
         </li>
@@ -24,35 +30,84 @@
     </div>
   </nav>
   <div class="container">
-    <h4 id="title">Crear una persona</h4>
+    <h4 id="title" class="objpadding">Crear una persona</h4><br>
     <div class="row">
       <form action="./script.php" id="dropdown" method="get" name="dropdown">
-        <label for="first_name">First Name</label>
-        <input id="text" name="first_name">
-        <label for="last_name">Last Name</label>
-        <input id="surname" name="last_name">
-        <label for="email">Email</label>
-        <input id="email" name="email">
+        <div class="input-field col s12">
+        <input id="text" name="first_name" class="validate">
+        <label for="first_name" class="active">Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="surname" name="last_name" class="validate">
+        <label for="last_name" class="active">Apellido</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="email" name="email" class="validate">
+        <label for="email" class="active">Correo electrónico</label>
+        <span class="helper-text" data-error="Escribe un correo electrónico válido." data-success="¡Excelente!"></span>
+      </div>
+        <!--Gets deleted after checkbox populates itself with JSON values -->
+          <div id="preloader">
+              <div class="col s4 cbox">
+              <p>
+                <label>
+                  <input type="checkbox" disabled="disabled" />
+                  <span>Cargando...</span>
+                </label>
+              </p>
+            </div>
+            <div class="col s4 cbox">
+              <p>
+                <label>
+                  <input type="checkbox" disabled="disabled" />
+                  <span>Cargando...</span>
+                </label>
+              </p>
+            </div>
+            <div class="col s4 cbox">
+              <p>
+                <label>
+                  <input type="checkbox" disabled="disabled" />
+                  <span>Cargando...</span>
+                </label>
+              </p>
+            </div>
+          <a class="btn disabled nicebtn objpadding">SUBIR</a>
+      </div>
       </form>
-      <div id="demo">
+
         <script type="text/javascript">
           var urlParams = new URLSearchParams(window.location.search);
-let dropdown = $('#dropdown');
-$.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
-  var ele = document.getElementById('dropdown');
-  for (var i = 0; i < data.length; i++) {
-    ele.innerHTML += '<p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p>'
-  }
-  ele.innerHTML += '<a onclick="enviarAJson();">Nice</a>'
-  loadData();
-});
+          let dropdown = $('#dropdown');
+
+          $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
+            var ele = document.getElementById('dropdown');
+            for (var i = 0; i < data.length; i++) {
+              ele.innerHTML += '<div class="col s4 cbox"><p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p></div>'
+            }
+            ele.innerHTML += '<br><a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn objpadding pink darken-1">Subir</a>'
+            loadData();
+
+            //remove preloader (Cargando...)
+            var elem = document.getElementById('preloader')
+            elem.parentNode.removeChild(elem);
+
+          });
+
 function enviarAJson() {
   var first_name = document.getElementById("text").value;
   var last_name = document.getElementById("surname").value;
   var email = document.getElementById("email").value;
   var selected_courses = [];
   var amountOfObjects;
-  // Might be a very round-about way to check how many checkboxes are there, but it makes sense to me, so I ain't complaining.
+
+  if (!($("#dropdown input:checkbox:checked").length > 0))
+  {
+    M.toast({html: '¡No introduciste ningún curso!', classes: 'rounded'});
+    return;
+  }
+
+  // Might be a very round-about way to check how many checkboxes are there
   // TO-DO: check if I can make this in a less round-about way
   $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
     amountOfObjects = data.length;
@@ -116,16 +171,45 @@ function enviarAJson() {
       contentType: "application/json",
       dataType: 'json',
       error: function(xhr, status, error) {
+        // Error catching
         console.log(error);
         console.log(xhr.responseText);
-        M.toast({html: '¡Hay un error en tus respuestas!', classes: 'rounded'});
+        errores = JSON.parse(xhr.responseText);
+        for (var key in errores.errors) {
+          for (var error in errores.errors[key]) {
+            // Switch-case structure for translating the errors JSON may give.
+            // It isn't translating everything - more technical errors I'd rather have in English anyways,
+            // but it's the four most common errors having to do with user error.
+            switch(errores.errors[key][error]) {
+              case "The first name field is required.":
+                M.toast({html: "Se requiere escribir el nombre.", classes: 'rounded'});
+                break;
+              case "The last name field is required.":
+                M.toast({html: "Se requiere escribir el apellido.", classes: 'rounded'});
+                break;
+              case "The email field is required.":
+                M.toast({html: "Se requiere escribir el correo electrónico.", classes: 'rounded'});
+                break;
+              case "The email has already been taken.":
+                M.toast({html: "Este correo electrónico ya está en uso.", classes: 'rounded'});
+                break;
+              default:
+                // In case the error doesn't exist, just print the original error in English.
+                M.toast({html: errores.errors[key][error], classes: 'rounded'});
+                break;
+            }
+          }
+        }
       },
       success: function() {
-        M.toast({html: '¡Tu entrada se ha ' + peoplesTerm + ' con éxito!', classes: 'rounded'});
+        var toastHTML = '<span>¡Tu entrada se ha ' + peoplesTerm + ' con éxito!</span><a href="./index.html"><button class="btn-flat toast-action">Mirar</button></a>';
+        M.toast({html: toastHTML, classes: 'rounded'});
       } //TO-DO: send them back to index. probably add an alert afterwards
     });
   });
 }
+
+
 function loadData() {
 if(urlParams.has('edit')) {
   var first = document.getElementById('text');
@@ -141,11 +225,22 @@ if(urlParams.has('edit')) {
 if(urlParams.has('edit')) {
   var ele = document.getElementById('title');
   ele.innerHTML = "Modificar una persona"
+  document.title = "Modificar persona - APIHook";
 }
         </script>
       </div>
     </div>
   </div>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <style>
+    .nicebtn
+    {
+      margin-top: 15px;
+    }
+    .objpadding
+    {
+      margin-left: 10px;
+    }
+  </style>
 </body>
 </html>
