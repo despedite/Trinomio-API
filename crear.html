@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--UTF-8-->
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta content="utf-8" http-equiv="encoding">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!--Import materialize.css-->
   <link href="css/materialize.min.css" media="screen,projection" rel="stylesheet" type="text/css">
@@ -15,24 +12,18 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a class="brand-logo" href="index.html">APIHook</a>
+      <a class="brand-logo" href="#">APIHook</a>
       <ul class="right hide-on-med-and-down" id="nav-mobile">
         <li>
-          <a href="index.html">Personas</a>
+          <a href="collapsible.html">Personas</a>
         </li>
       </ul>
     </div>
   </nav>
   <div class="container">
-    <h4 id="title">Crear una persona</h4>
     <div class="row">
       <form action="./script.php" id="dropdown" method="get" name="dropdown">
-        <label for="first_name">First Name</label>
-        <input id="text" name="first_name">
-        <label for="last_name">Last Name</label>
-        <input id="surname" name="last_name">
-        <label for="email">Email</label>
-        <input id="email" name="email">
+        <label for="first_name">First Name</label> <input id="text" name="first_name"> <label for="last_name">Last Name</label> <input id="surname" name="last_name"> <label for="email">Email</label> <input id="email" name="email">
       </form>
       <div id="demo">
         <script type="text/javascript">
@@ -43,7 +34,6 @@ $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
     ele.innerHTML += '<p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p>'
   }
   ele.innerHTML += '<a onclick="enviarAJson();">Nice</a>'
-  loadData();
 });
 
 function enviarAJson() {
@@ -116,6 +106,7 @@ function enviarAJson() {
     });
   });
 }
+<<<<<<< HEAD
 
 var urlParams = new URLSearchParams(window.location.search);
 function loadData() {
@@ -136,6 +127,8 @@ if(urlParams.has('edit')) {
   var ele = document.getElementById('title');
   ele.innerHTML = "Modificar una persona"
 }
+=======
+>>>>>>> parent of 6907aea... Merge branch 'v0.2.1-modify'
         </script>
       </div>
     </div>
