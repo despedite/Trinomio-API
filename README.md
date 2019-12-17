@@ -11,26 +11,10 @@
   <br>
   <strong><a href="http://erik.games/apihook">Revisalo online</a> · <a href="https://github.com/despediteerik/Trinomio-API/releases">Descargá el código fuente</strong>
   <br>
-  <br>
-  <a href="https://travis-ci.org/Dogfalo/materialize">
-    <img src="https://travis-ci.org/Dogfalo/materialize.svg?branch=master" alt="Travis CI badge">
-  </a>
-  <a href="https://badge.fury.io/js/materialize-css">
-    <img src="https://badge.fury.io/js/materialize-css.svg" alt="npm version badge">
-  </a>
-  <a href="https://cdnjs.com/libraries/materialize">
-    <img src="https://img.shields.io/cdnjs/v/materialize.svg" alt="CDNJS version badge">
-  </a>
-  <a href="https://david-dm.org/Dogfalo/materialize">
-    <img src="https://david-dm.org/Dogfalo/materialize/status.svg" alt="dependencies Status badge">
-    </a>
-  <a href="https://david-dm.org/Dogfalo/materialize#info=devDependencies">
-    <img src="https://david-dm.org/Dogfalo/materialize/dev-status.svg" alt="devDependency Status badge">
-  </a>
-  <a href="https://gitter.im/Dogfalo/materialize">
-    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter badge">
-  </a>
-</p>
+
+***
+
+APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es/docs/Web/JavaScript), [jQuery](https://jquery.com/) y [Materialize](https://materializecss.com/); que toma los elementos de [una API](http://evera.challenge.trinom.io/api/documentation) diseñada para tomar los datos de personas inscritas a ciertos cursos, y permite visualizar los datos de esta en una tabla simple, añadir nuevos datos a la API mediante requests POST, modificar datos ya existentes, y eliminar personas de la API. *Creada para el Desafío Trinomio.*
 
 ## Table of Contents
 - [Quickstart](#quickstart)
