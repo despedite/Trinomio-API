@@ -18,60 +18,27 @@ APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es
 
 ![](https://raw.githubusercontent.com/despediteerik/Trinomio-API/documentacion/img/snapshot.png?token=AIVICLU53OIRMDSHTOEMZDC6AKDXM)
 
-## Table of Contents
-- [Quickstart](#quickstart)
-- [Documentation](#documentation)
-- [Supported Browsers](#supported-browsers)
+## Contenido:
+- [Donde empezar](#dondeempezar)
+- [Documentación](#documentacion)
 - [Changelog](#changelog)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [Copyright and license](#copyright-and-license)
+- [Licencia](#licencia)
 
-## Quickstart:
-Read the [getting started guide](http://materializecss.com/getting-started.html) for more information on how to use materialize.
+## Donde empezar:
+Para revisar APIHook cómo el usuario final, podés usarlo on-line sin descargar nada en http://erik.games/apihook.
 
-- [Download the latest release](https://github.com/Dogfalo/materialize/releases/latest) of materialize directly from GitHub. ([Beta](https://github.com/Dogfalo/materialize/releases/))
-- Clone the repo: `git clone https://github.com/Dogfalo/materialize.git` (Beta: `git clone -b v1-dev https://github.com/Dogfalo/materialize.git`)
-- Include the files via [cdnjs](https://cdnjs.com/libraries/materialize). More [here](http://materializecss.com/getting-started.html). ([Beta](https://cdnjs.com/libraries/materialize/1.0.0-beta))
-- Install with [npm](https://www.npmjs.com): `npm install materialize-css` (Beta: `npm install materialize-css@next`)
-- Install with [Bower](https://bower.io): `bower install materialize` ([DEPRECATED](https://bower.io/blog/2017/how-to-migrate-away-from-bower/))
-- Install with [Atmosphere](https://atmospherejs.com): `meteor add materialize:materialize` (Beta: `meteor add materialize:materialize@=1.0.0-beta`)
+Por otro lado, para instalar APIHook manualmente en tu computadora:
+- [Descarga la última versión de APIHook](https://github.com/despediteerik/Trinomio-API/releases). (También podés clonar master, descargandoló via este [link](https://github.com/despediteerik/Trinomio-API/archive/master.zip).)
+- Extraé los datos de la carpeta.
+- Abre el archivo "index.html" adentro de la carpeta en tu navegador de elección.
 
-## Documentation
+APIHook usa Javascript puro, para evitar tener que crear un servidor para acceder a los datos de la API (cómo lo haría si el sitio web usase PHP).
+
+## Documentación
 The documentation can be found at <http://materializecss.com>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer.
-
-### Running documentation locally
-Run these commands to set up the documentation:
-
-```bash
-git clone https://github.com/Dogfalo/materialize
-cd materialize
-npm install
-```
-
-Then run `grunt monitor` to compile the documentation. When it finishes, open a new browser window and navigate to `localhost:8000`. We use [BrowserSync](https://www.browsersync.io/) to display the documentation.
-
-### Documentation for previous releases
-Previous releases and their documentation are available for [download](https://github.com/Dogfalo/materialize/releases).
-
-## Supported Browsers:
-Materialize is compatible with:
-
-- Chrome 35+
-- Firefox 31+
-- Safari 9+
-- Opera
-- Edge
-- IE 11+
 
 ## Changelog
 For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md).
 
-## Testing
-We use Jasmine as our testing framework and we're trying to write a robust test suite for our components. If you want to help, [here's a starting guide on how to write tests in Jasmine](CONTRIBUTING.md#jasmine-testing-guide).
-
-## Contributing
-Check out the [CONTRIBUTING document](CONTRIBUTING.md) in the root of the repository to learn how you can contribute. You can also browse the [help-wanted](https://github.com/Dogfalo/materialize/labels/help-wanted) tag in our issue tracker to find things to do.
-
-## Copyright and license
-Code Copyright 2018 Materialize. Code released under the MIT license.
+## Licencia
+APIHook es licensiado bajo The Unlicense. ¡Usá el código cómo quieras!
