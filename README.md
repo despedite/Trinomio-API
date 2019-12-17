@@ -1,13 +1,13 @@
 <p align="center">
   <a href="http://materializecss.com/">
-    <img src="https://raw.githubusercontent.com/despediteerik/Trinomio-API/master/img/logo-p.png?token=AIVICLVC2VG6XR2SP3NULWS6AKBLW" width="150">
+    <img src="https://raw.githubusercontent.com/despediteerik/Trinomio-API/master/img/logo-p.png?token=AIVICLVC2VG6XR2SP3NULWS6AKBLW" width="250">
   </a>
 </p>
 
-<h3 align="center">MaterializeCSS</h3>
+<h3 align="center">APIHook</h3>
 
 <p align="center">
-  Materialize, a CSS Framework based on material design.
+  Un sitio web para crear, modificar, eliminar y visualizar personas y sus cursos, con la <a href="http://evera.challenge.trinom.io/api/documentation">API de Trinomio</a>.
   <br>
   <a href="http://materializecss.com/"><strong>-- Browse the docs --</strong></a>
   <br>
