@@ -101,6 +101,11 @@ function enviarAJson() {
   var selected_courses = [];
   var amountOfObjects;
 
+  if (!($("#dropdown input:checkbox:checked").length > 0))
+  {
+    M.toast({html: '¡No introduciste ningún curso!', classes: 'rounded'});
+    return;
+  }
 
   // Might be a very round-about way to check how many checkboxes are there
   // TO-DO: check if I can make this in a less round-about way
@@ -177,7 +182,8 @@ function enviarAJson() {
         }
       },
       success: function() {
-        M.toast({html: '¡Tu entrada se ha ' + peoplesTerm + ' con éxito!', classes: 'rounded'});
+        var toastHTML = '<span>¡Tu entrada se ha ' + peoplesTerm + ' con éxito!</span><a href="./index.html"><button class="btn-flat toast-action">Mirar</button></a>';
+        M.toast({html: toastHTML, classes: 'rounded'});
       } //TO-DO: send them back to index. probably add an alert afterwards
     });
   });
