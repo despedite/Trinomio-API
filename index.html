@@ -31,8 +31,7 @@
 	    </div>
 	  </nav>
 
-      
-          <table id="records_table" border='1' class="responsive-table" style="margin:20px;">
+          <table id="records_table" border='1' class="responsive-table" style="margin-top:20px;">
           </table>
 
           <div class="fixed-action-btn">
@@ -65,7 +64,7 @@
 	            for(var j=0; j<keystwo.length; j++){
 	              $('<tr class="child-' + data.data[i].id + '">').append(
 	                $('<td style="background-color:lightgrey">').text(data.data[i].courses[j].id),
-	                $('<td colspan="5" style="background-color:lightgrey"> <b>' + data.data[i].courses[j].name + '</b><br>' + data.data[i].courses[j].level.name + '<br><small>' + data.data[i].courses[j].language.name + "</small><br> ...") //TODO: removes last line??
+	                $('<td colspan="5" style="background-color:lightgrey"> <b>' + data.data[i].courses[j].name + '</b><br>Nivel: ' + data.data[i].courses[j].level.name + '<br><small>' + data.data[i].courses[j].language.name + " (" + data.data[i].courses[j].language.code + ")</small><br> ...") //TODO: removes last line??
 	              ).appendTo('#records_table');
 	            }
 	          }
@@ -102,6 +101,10 @@
 		  $(document).on("click",'tr.parent td span.expand',function(){
 		    var idOfParent = $(this).parents('tr').attr('id');
 		    $('tr.child-'+idOfParent).toggle('fast');
+		    if ($(this).children('i').text() == "fullscreen_exit")
+       			$(this).children('i').text("fullscreen")
+    		else
+       			$(this).children('i').text("fullscreen_exit");
 		  });
 		});
 
@@ -112,6 +115,17 @@
       <style type="text/css">
 		i.icon-black {
 		    color: black;
+		}
+		#preloader{
+		    position: absolute;
+		    height: 100px;
+		    width: 100px;
+		    top: 50%;
+		    left: 50%;
+		    margin-left: -50px;
+		    margin-top: -50px;
+		    background: url(/link/to/your/image);
+		    background-size: 100%;
 		}
       </style>
 

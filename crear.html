@@ -36,19 +36,51 @@
         <input id="surname" name="last_name">
         <label for="email">Email</label>
         <input id="email" name="email">
+
+        <!--Gets deleted after checkbox populates itself with JSON values -->
+        <div id="preloader">
+          <p>
+            <label>
+              <input type="checkbox" disabled="disabled" />
+              <span>Cargando...</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" disabled="disabled" />
+              <span>Cargando...</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" disabled="disabled" />
+              <span>Cargando...</span>
+            </label>
+          </p>  
+          <a class="btn disabled">CARGANDO...</a>
+      </div>
+
       </form>
       <div id="demo">
+
         <script type="text/javascript">
           var urlParams = new URLSearchParams(window.location.search);
-let dropdown = $('#dropdown');
-$.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
-  var ele = document.getElementById('dropdown');
-  for (var i = 0; i < data.length; i++) {
-    ele.innerHTML += '<p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p>'
-  }
-  ele.innerHTML += '<a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn">Subir</a>'
-  loadData();
-});
+          let dropdown = $('#dropdown');
+          
+          $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
+            var ele = document.getElementById('dropdown');
+            for (var i = 0; i < data.length; i++) {
+              ele.innerHTML += '<p><label><input type="checkbox" name="' + data[i].id + '" id="' + data[i].id + '" value="yes"/><span>' + data[i].name + '</span></label></p>'
+            }
+            ele.innerHTML += '<a onclick="enviarAJson();" class="waves-effect waves-light btn nicebtn">Subir</a>'
+            loadData();
+
+            //remove preloader (Cargando...)
+            var elem = document.getElementById('preloader')
+            elem.parentNode.removeChild(elem);
+
+          });
+          
 
 function enviarAJson() {
   var first_name = document.getElementById("text").value;
@@ -56,7 +88,7 @@ function enviarAJson() {
   var email = document.getElementById("email").value;
   var selected_courses = [];
   var amountOfObjects;
-  // Might be a very round-about way to check how many checkboxes are there, but it makes sense to me, so I ain't complaining.
+  // Might be a very round-about way to check how many checkboxes are there
   // TO-DO: check if I can make this in a less round-about way
   $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
     amountOfObjects = data.length;
