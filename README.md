@@ -44,7 +44,7 @@ En la *tabla*, se pueden observar tres botones a la derecha de una entrada: Expa
 Modificar, sin embargo, enviará al usuario a el mismo formulario que si fueran a crear una nueva persona, pero alterado. Modificar una persona llena automáticamente los valores de la entrada a modificar (nombre, apellido, correo), y en vez de enviar una request POST a api/peoples, manda una request PUT a api/peoples/id. El resto de las características de modificar una entrada existente son las mismas que crear una entrada.
 
 ## Changelog
-For changelogs, check out [the Releases section of materialize](https://github.com/Dogfalo/materialize/releases) or the [CHANGELOG.md](CHANGELOG.md).
+Podés encontrar el changelog entre actualizaciones en la página de [RELEASES](https://github.com/despediteerik/Trinomio-API/releases). También podés revisar el [historial de commits](https://github.com/despediteerik/Trinomio-API/commits/master), si querés ir más a fondo en que cambió entre cada commit (o mirar los [branches existentes](https://github.com/despediteerik/Trinomio-API/branches)).
 
 ## Licencia
-APIHook es licensiado bajo The Unlicense. ¡Usá el código cómo quieras!
+APIHook es licensiado bajo [The Unlicense](https://github.com/despediteerik/Trinomio-API/blob/master/LICENSE), una licencia que permite el uso privado, comercial, modificación y distribución del código sin condiciones, liberandoló al dominio público. ¡Usá el código cómo quieras!
