@@ -29,7 +29,7 @@ function showTable() {
 				// Por cada curso que tenga asignada la persona actual, se crea una entrada "hijo."
 				// Esta contiene la información de el nombre del curso, el nivel de dificultad, y el idioma (y abreviación).
 				// (Esta tabla está escondida por defecto, hasta que se maximice).
-				$('<tr class="child-' + data.data[i].id + '">').append($('<td style="background-color:lightgrey">').text(data.data[i].courses[j].id), $('<td colspan="5" style="background-color:lightgrey"> <b>' + data.data[i].courses[j].name + '</b><br>Nivel: ' + data.data[i].courses[j].level.name + '<br><small>' + data.data[i].courses[j].language.name + " (" + data.data[i].courses[j].language.code + ")</small><br> ...") //TODO: removes last line??
+				$('<tr class="child-' + data.data[i].id + '">').append($('<td class="childTable">').text(data.data[i].courses[j].id), $('<td colspan="5" class="childTable"> <b>' + data.data[i].courses[j].name + '</b><br>Nivel: ' + data.data[i].courses[j].level.name + '<br><small>' + data.data[i].courses[j].language.name + " (" + data.data[i].courses[j].language.code + ")</small><br> ...") //TODO: removes last line??
 				).appendTo('#records_table');
 			}
 		}
