@@ -20,11 +20,12 @@ APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es
 
 ## Contenido:
 - [Instalación](#instalación)
+- [Dependencias](#dependencias)
 - [Tutorial](#tutorial)
 - [Changelog](#changelog)
 - [Licencia](#licencia)
 
-## Instalación:
+## Instalación
 Para revisar APIHook cómo el usuario final, podés usarlo on-line sin descargar nada en http://erik.games/apihook.
 
 Por otro lado, para instalar APIHook manualmente en tu computadora:
@@ -33,6 +34,14 @@ Por otro lado, para instalar APIHook manualmente en tu computadora:
 - Abre el archivo "index.html" adentro de la carpeta en tu navegador de elección.
 
 APIHook usa Javascript puro, para evitar tener que crear un servidor para acceder a los datos de la API (cómo lo haría si el sitio web usase PHP).
+
+## Dependencias
+Todas las dependencias ya vienen incluidas en los archivos - para abrir el sitio, no se necesita instalar nada externo. De todas formas, las dependencias externas usadas son:
+
+- [Iconos de Material Design](https://google.github.io/material-design-icons/#icon-font-for-the-web) (`<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`)
+- [Materialize, CSS](https://materializecss.com/) (`<link href="css/materialize.min.css" media="screen,projection" rel="stylesheet" type="text/css">`)
+- [Materialize, JS](https://materializecss.com/) (`<script src="js/materialize.min.js" type="text/javascript"></script>`)
+- [jQuery](https://jquery.com/) (`<script src="js/jquery-3.4.1.min.js" type="text/javascript">`)
 
 ## Tutorial
 APIHook tiene dos vistas: la visualización de la tabla con los datos de la API, y la creación (o modificación) de nuevas entradas a la API.
