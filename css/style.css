@@ -1,0 +1,39 @@
+/* CSS para Index */
+
+i.icon-black {
+	color: black;
+}
+
+
+#tableContainer {
+	width: 90%;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.childTable {
+	background-color: gainsboro;
+}
+
+/* CSS para Crear */
+
+.nicebtn
+{
+	margin-top: 15px;
+}
+.objpadding
+{
+	margin-left: 10px;
+}
+
+/* CSS multi-uso */
+
+#logo {
+	height: 32px;
+	vertical-align: middle;
+	padding-bottom: 7px;
+}
+
+.nav-wrapper {
+	padding: 0px 50px 0px 50px;
+}
