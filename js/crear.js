@@ -155,10 +155,16 @@ function loadData() {
 	email.value = urlParams.get('email')
   }
 }
-//NOTE: The following could be on the function loadData();, but since we have to wait until the JSON-populated
-//checkboxes load before changing the title, it looks jarring and breaks the illusion of two different forms.
-if (urlParams.has('edit')) {
-  var ele = document.getElementById('title');
-  ele.innerHTML = "Modificar una persona"
-  document.title = "Modificar persona - APIHook";
+
+function esModificar() {
+	var editVal = urlParams.get('edit');
+	if (editVal == "true") {
+	  document.title = "Modificar persona - APIHook";
+	  var title = document.getElementById('mainTitle');
+	  title.innerHTML = "Modificar una persona"
+	}
 }
+
+$(document).ready(function() {
+	esModificar();
+});
