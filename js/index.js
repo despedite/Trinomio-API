@@ -9,10 +9,21 @@ function showTable() {
 		// Esto lo podría haber hecho en HTML, pero es más fácil reiniciar toda la tabla así cuando,
 		// por ejemplo, se elimina un usuario y hay que refrescar los datos.
 		document.getElementById('records_table').innerHTML = '<thead><tr><th>#</th><th>Nombre</th><th>Apellido</th><th>Email</th><th>Cursos</th><th>Acciones</th></tr></thead><tbody>';
+		selected_courses = new Array();
 		for (var i = 0; i < keys.length; i++) {
+
+			// Vamos a usar selected_courses para formar un array de los cursos seleccionados en cada entrada.
+			// Esto después entra en una URL cuando presionemos el boton de modificar, así los cursos se ponen automáticamente.
+			selected_courses[i] = []
+			var keystwo = Object.keys(data.data[i].courses);
+			for (var j = 0; j < keystwo.length; j++) {
+				// Por cada curso que exista en el usuario en el que estamos, llenamos la ID del curso en un array.
+				selected_courses[i].push(data.data[i].courses[j].id);
+			}
+
 			// Por cada item en api/peoples, se añade la entrada "padre".
 			// Esta es la que contiene el ID de la persona, nombre, apellido, correo, expandir, editar y eliminar.
-			$('<tr class="parent" id="' + data.data[i].id + '">').append($('<td>').text(data.data[i].id), $('<td>').text(data.data[i].first_name), $('<td>').text(data.data[i].last_name), $('<td>').text(data.data[i].email), $('<td><span class="expand btn-floating waves-effect waves-teal btn-flat"><i class="material-icons left icon-black">fullscreen</i></span>'), $('<td><a href="./crear.html?edit=true&id=' + data.data[i].id + '&first_name=' + data.data[i].first_name + '&last_name=' + data.data[i].last_name + '&email=' + data.data[i].email + '"><span class="btn-floating waves-effect waves-teal btn-flat"><i class="material-icons left icon-black">edit</i></span></a> <a onclick="eliminarEntrada(' + "'" + data.data[i].first_name + "'" + ', ' + data.data[i].id + ');"><span class="btn-floating waves-effect waves-teal btn-flat"><i class="material-icons left icon-black">delete</i></span></a>')).appendTo('#records_table');
+			$('<tr class="parent" id="' + data.data[i].id + '">').append($('<td>').text(data.data[i].id), $('<td>').text(data.data[i].first_name), $('<td>').text(data.data[i].last_name), $('<td>').text(data.data[i].email), $('<td><span class="expand btn-floating waves-effect waves-teal btn-flat"><i class="material-icons left icon-black">fullscreen</i></span>'), $('<td><a href="./crear.html?edit=true&id=' + data.data[i].id + '&first_name=' + data.data[i].first_name + '&last_name=' + data.data[i].last_name + '&email=' + data.data[i].email + '&courses=' + JSON.stringify(selected_courses[i]) + '"><span class="btn-floating waves-effect waves-teal btn-flat"><i class="material-icons left icon-black">edit</i></span></a> <a onclick="eliminarEntrada(' + "'" + data.data[i].first_name + "'" + ', ' + data.data[i].id + ');"><span class="btn-floating waves-effect waves-teal btn-flat"><i class="material-icons left icon-black">delete</i></span></a>')).appendTo('#records_table');
 			var keystwo = Object.keys(data.data[i].courses);
 			for (var j = 0; j < keystwo.length; j++) {
 				// Por cada curso que tenga asignada la persona actual, se crea una entrada "hijo."

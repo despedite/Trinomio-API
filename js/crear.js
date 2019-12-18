@@ -181,9 +181,26 @@ function loadData() {
 		var first = document.getElementById('text');
 		var last = document.getElementById('surname');
 		var email = document.getElementById('email');
-		first.value = urlParams.get('first_name')
-		last.value = urlParams.get('last_name')
-		email.value = urlParams.get('email')
+		var courseArray = JSON.parse(urlParams.get('courses'));
+
+		first.value = urlParams.get('first_name');
+		last.value = urlParams.get('last_name');
+		email.value = urlParams.get('email');
+
+		// Por cada checkbox que hay...
+		$("input:checkbox").each(function() {
+			// Por cada checkbox que tiene ID que hay...
+			// (El placeholder de Cargando... contaría en esta función, pero no pasa este test
+			// porque estamos saltando todos los checkboxes que no tengan una ID definida.)
+			if ($(this).attr('id') != undefined) {
+				for (j=0; j<courseArray.length; j++) {
+					// Si la ID de esta checkbox es igual a la ID guardada en el array, hace que el checkbox esté activo.
+					if ($(this).attr('id') == courseArray[j]) {
+						$(this).prop('checked', true);
+					}
+				}
+			}
+		});
 	}
 }
 
