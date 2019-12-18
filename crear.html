@@ -24,8 +24,8 @@
 <body>
 	<!-- Barra de Navegación -->
 	<nav>
-		<div class="nav-wrapper purple darken-2" style="padding: 0px 50px 0px 50px;">
-			<a class="brand-logo" href="index.html"><img src="img/logo.png" style="height: 32px; vertical-align: middle; padding-bottom: 7px;"></a>
+		<div class="nav-wrapper purple darken-2">
+			<a class="brand-logo" href="index.html"><img src="img/logo.png" id="logo"></a>
 			<ul class="right hide-on-med-and-down" id="nav-mobile">
 				<li>
 					<a href="https://github.com/despediteerik/Trinomio-API">Github</a>
@@ -42,7 +42,7 @@
   	<!-- El título cambia dependiendo de si "?edit=true" existe -->
 	<h4 class="objpadding" id="mainTitle">Agregar una persona</h4><br>
 	<div class="row">
-	  <form action="./script.php" id="dropdown" method="get" name="dropdown">
+	  <form action="./script.php" id="checkboxForm" method="get" name="dropdown">
 		<div class="input-field col s12">
 		  <input class="validate" id="text" name="first_name"> <label class="active" for="first_name">Nombre</label>
 		</div>

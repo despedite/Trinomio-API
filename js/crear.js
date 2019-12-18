@@ -4,8 +4,7 @@ var urlParams = new URLSearchParams(window.location.search);
 var editVal = urlParams.get('edit');
 // Agarramos los datos de api/courses:
 $.getJSON('http://evera.challenge.trinom.io/api/courses', function(data) {
-	// "Dropdown" en realidad es el nombre de los checkboxes que hay que poblar.
-	var ele = document.getElementById('dropdown');
+	var ele = document.getElementById('checkboxForm');
 	for (var i = 0; i < data.length; i++) {
 		// Por cada curso que haya en la API, se genera una checkbox con su ID y nombre.
 		// Los valores adicionales, como el nivel y el lenguaje, se agregan más tarde.
@@ -31,7 +30,7 @@ function enviarAJson() {
 	var amountOfObjects;
 
 	// Antes de empezar, revisamos que se hayan introducido cursos. Si no es así, le envía un toast al usuario.
-	if (!($("#dropdown input:checkbox:checked").length > 0)) {
+	if (!($("#checkboxForm input:checkbox:checked").length > 0)) {
 		M.toast({
 			html: '¡No introduciste ningún curso!',
 			classes: 'rounded'

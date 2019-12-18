@@ -23,8 +23,8 @@
 <body>
 	<!-- Barra de Navegación -->
 	<nav>
-		<div class="nav-wrapper purple darken-2" style="padding: 0px 50px 0px 50px;">
-			<a class="brand-logo" href="index.html"><img src="img/logo.png" style="height: 32px; vertical-align: middle; padding-bottom: 7px;"></a>
+		<div class="nav-wrapper purple darken-2">
+			<a class="brand-logo" href="index.html"><img src="img/logo.png" id="logo"></a>
 			<ul class="right hide-on-med-and-down" id="nav-mobile">
 				<li>
 					<a href="https://github.com/despediteerik/Trinomio-API">Github</a>
@@ -39,9 +39,9 @@
 	<!-- Tabla (aka la parte divertida) -->
 	<!-- Container con width de 90%. Materialize hace muy chico el espacio de los containers para una tabla, -->
 	<!-- y añadirle margin a toda la tabla en CSS hace que esta se corra a la izquierda. -->
-	<div class="container" style="width: 90%;">
+	<div class="container" id="tableContainer">
 		<!-- La tabla se llena programáticamente en Javascript. -->
-		<table border='1' class="responsive-table" id="records_table" style="margin-top:20px;"></table>
+		<table border='1' class="responsive-table" id="records_table"></table>
 	</div>
 	<!-- FAB (floating action button). Presionarlo te lleva a el diálogo de Crear una Persona. -->
 	<div class="fixed-action-btn">
