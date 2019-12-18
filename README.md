@@ -28,7 +28,7 @@ APIHook es un sitio web creado con [Javascript](https://developer.mozilla.org/es
 Para revisar APIHook cómo el usuario final, podés usarlo on-line sin descargar nada en http://erik.games/apihook.
 
 Por otro lado, para instalar APIHook manualmente en tu computadora:
-- [Descarga la última versión de APIHook](https://github.com/despediteerik/Trinomio-API/releases). (También podés clonar master, descargandoló via este [link](https://github.com/despediteerik/Trinomio-API/archive/master.zip).)
+- [Descarga la última versión de APIHook](https://github.com/despediteerik/Trinomio-API/releases/latest). (También podés clonar master, descargandoló via este [link](https://github.com/despediteerik/Trinomio-API/archive/master.zip).)
 - Extraé los datos de la carpeta.
 - Abre el archivo "index.html" adentro de la carpeta en tu navegador de elección.
 
@@ -41,7 +41,7 @@ La *creación* de nuevas entradas puede ser encontrada presionando el Floating A
 
 En la *tabla*, se pueden observar tres botones a la derecha de una entrada: Expandir, Modificar y Eliminar. Presionar "Expandir" mostrará todos los cursos en los que la persona seleccionada está inscrito (y dará la opción de, presionando el mismo botón, contraer para guardar espacio.) Eliminar, por otro lado, *eliminará* la entrada de usuario de la base de datos, junto con sus cursos; refrescará la vista de la tabla, y mostrará una notificación indicando que la persona fue eliminada de la API correctamente.
 
-Modificar, sin embargo, enviará al usuario a el mismo formulario que si fueran a crear una nueva persona, pero alterado. Modificar una persona llena automáticamente los valores de la entrada a modificar (nombre, apellido, correo), y en vez de enviar una request POST a api/peoples, manda una request PUT a api/peoples/id. El resto de las características de modificar una entrada existente son las mismas que crear una entrada.
+Modificar, sin embargo, enviará al usuario a el mismo formulario que si fueran a crear una nueva persona, pero alterado. Modificar una persona llena automáticamente los valores de la entrada a modificar (nombre, apellido, correo, cursos), y en vez de enviar una request POST a api/peoples, manda una request PUT a api/peoples/id. El resto de las características de modificar una entrada existente son las mismas que crear una entrada.
 
 ## Changelog
 Podés encontrar el changelog entre actualizaciones en la página de [RELEASES](https://github.com/despediteerik/Trinomio-API/releases). También podés revisar el [historial de commits](https://github.com/despediteerik/Trinomio-API/commits/master), si querés ir más a fondo en que cambió entre cada commit (o mirar los [branches existentes](https://github.com/despediteerik/Trinomio-API/branches)).
